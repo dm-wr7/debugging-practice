@@ -3,7 +3,7 @@ import AddTreasure from './AddTreasure';
 
 export default function Treasure() {
   const treasure = props.treasure.map((item) => {
-    return <img src={item.url} key={index} alt="" />;
+    <img src={item.url} key={index} alt="" />;
   });
   return (
     <div>

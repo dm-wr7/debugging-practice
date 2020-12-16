@@ -97,7 +97,7 @@ export default class Header extends Component {
               type="text"
               placeholder="Username"
               value={username}
-              onChange={e => this.handleUsernameInput(e.target.value)}
+              onChange={e => this.handleUsernameInput(e.target)}
             />
             <input
               type="password"
