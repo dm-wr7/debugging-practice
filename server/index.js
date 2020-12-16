@@ -1,7 +1,9 @@
 require('dotenv').config();
 const express = require('express');
 const massive = require('massive');
+const session = require('express-session');
 const treasureCtrl = require('./controllers/treasureController');
+const authCtrl = require('./controllers/authController');
 const auth = require('./middlewares/authMiddleware');
 const app = express();
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env;
@@ -13,7 +15,8 @@ massive(CONNECTION_STRING).then(db => {
 
 app.use(session({
    resave: true,
-   saveUninitialized: false
+   saveUninitialized: false,
+   secret: SESSION_SECRET
 }));
 
 app.post('/auth/register', authCtrl.register);
