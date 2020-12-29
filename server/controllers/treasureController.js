@@ -7,7 +7,7 @@ module.exports = {
       const treasure = await req.app.get('db').get_user_treasure(req.session.user.id);
       res.status(200).send(treasure);
    },
-   addUsertreasure: async (req, res) => {
+   addUserTreasure: async (req, res) => {
       const {treasureURL} = req.body;
       const {id} = req.session.user;
 

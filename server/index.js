@@ -8,10 +8,15 @@ const auth = require('./middlewares/authMiddleware');
 const app = express();
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env;
 
-massive(CONNECTION_STRING).then(db => {
+massive({
+   connectionString: CONNECTION_STRING,
+   ssl: {
+      rejectUnauthorized: false
+   }
+}).then(db => {
    app.set('db', db);
    console.log('Database connected')
-})
+}).catch(err => console.log(err))
 
 app.use(session({
    resave: true,
